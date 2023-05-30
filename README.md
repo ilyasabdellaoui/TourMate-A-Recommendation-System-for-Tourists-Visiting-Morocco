@@ -1,5 +1,10 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#tourmate-a-recommendation-system-for-tourists-visiting-morocco)
+<h1 align="center">Welcome to TourMate-A-Recommendation-System-for-Tourists-Visiting-Morocco 👋</h1>
+<p>
+</p>
 
-# ➤ TourMate-A-Recommendation-System-for-Tourists-Visiting-Morocco
-A personalized recommendation system designed to enhance the travel experience of tourists visiting Morocco
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
