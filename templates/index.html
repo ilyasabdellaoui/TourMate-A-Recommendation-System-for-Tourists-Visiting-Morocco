@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Hopemage
+{% endblock %}
+
+{% block main %}
+<div class="hero">
+    <div class="hero_content">
+        <h2>Your Morocco Travel Companion</h2>
+        <div class="hero_cta">
+            <form method="post">
+                <input type="submit" id="n_cta" name="action" value="Suggere moi"/>
+                <input type="submit" id="s_cta" name="action" value="Ajoute un hotêl"/>
+            </form>
+        </div>
+    </div>
+</div>
+<section class="recommendation">
+    <div class="re_title">
+        <h2>Recommended Places</h2>
+    </div>
+    <div class="places">
+        <div class="place">
+            <img src="./static/rabat.jpg" alt="Rabat">
+            <h3>Rabat</h3>
+        </div>
+        <div class="place">
+            <img src="./static/kech.webp" alt="Marrakech">
+            <h3>Marrakech</h3>
+        </div>
+        <div class="place">
+            <img src="./static/casa.jpeg" alt="Casablanca">
+            <h3>Casablanca</h3>
+        </div>
+    </div>
+</section>
+<section class="numbers">
+    <div class="nu_title">
+        <h2>Numerous choices</h2>
+    </div>
+    <div class="nu_content">
+        <p>+5500 Hotel <span>IN</span> 12 Cities</p>
+    </div>
+</section>
+<section class="end">
+    <div class="l_title">
+        <p>Ready to dive into a new adventure</p>
+    </div>
+    <div class="last_cta">
+        <form method="post">
+            <input type="submit" id="l_cta1" name="action" value="Suggere moi"/>
+            <input type="submit" id="l_cta2" name="action" value="Ajoute un hotêl"/>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>TourMate - {% block title %}{% endblock %}</title>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+      <header>
+        <h1>TourMate</h1>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#">Best Plans</a></li>
+                <li><a href="#">Discover</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#">Suggest Me</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#">Best Plans</a>
+            <a href="#">Discover</a>
+            <a href="#">Suggest Me</a>
+        </div>
+    </div>
+
+     {% block main %}
+     {% endblock %} 
+
+      <div class="pattern-bar"></div>
+        <footer>
+            <div class="footer-section">
+              <h1>TourMate</h1>
+              <p>Your Morocco Travel Companion</p>
+            </div>
+
+            <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper convallis est, sit amet euismod nisi dictum eget. </p>
+            </div>
+            
+            <div class="footer-section">
+              <h3>Contract</h3>
+              <ul>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">General Policy</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>AL Irfane<br> Rabat, Morocco<br> Phone: (+212) 6456-7890<br> Email: contact@tourmate.com</p>
+            </div>
+          </footer>          
+        <script type="text/javascript" src="../static/mobile.js"></script>
+    </body>
+</html>

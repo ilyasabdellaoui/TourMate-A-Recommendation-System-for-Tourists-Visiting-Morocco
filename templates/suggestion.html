@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  suggestion
+{% endblock %}
+
+{% block main %}
+
+<form method="post" action="/suggestion">
+
+  <div class="input-grid">
+    <div>
+      <label for="vil">City</label>
+      <input list="cities" name="vil">
+      <datalist id="cities">
+        {% for ville in villes %}
+          <option value="{{ville}}" name="{{ville}}"/>
+        {% endfor %}
+      </datalist>
+    </div>
+
+    <div>
+      <label for="language">Language</label>
+      <input list="languages" name="lan">
+      <datalist id="languages">
+        {% for langue in langues %}
+          <option value="{{langue}}" name="{{langue}}"/>
+        {% endfor %}
+      </datalist>
+    </div>
+
+    <div>
+      <label for="price">Price</label>
+      <input type="number" name="price">
+    </div>
+  </div>
+
+  <div class="prompt">
+    <label>Magic prompt</label>
+    <input type="text" name="prompt">
+  </div>
+  
+  <div class="submit-btn">
+    <input type="submit" value="Bismillah">
+  </div>
+
+  <div class="result">
+    {% for res in result %}
+      {% autoescape false %}
+        <p>{{res}}</p>
+      {% endautoescape %}
+    {% endfor %}
+  </div>
+  
+</form>
+{% endblock %}
+
+{% macro input(name, value='', type='text', size=20) -%}
+    {% set list1 = variable1.split(',') %}
+    <input type="{{ type }}" name="{{ name }}" value="{{
+        value|e }}" size="{{ size }}">
+{% endmacro %}
