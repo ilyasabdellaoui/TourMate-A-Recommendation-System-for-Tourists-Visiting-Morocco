@@ -291,7 +291,7 @@ form {
 
 .input-grid input , .prompt input {
   border: none;
-  border-radius: 20px;
+  border-radius: 7px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
   width: 70%;
@@ -317,17 +317,25 @@ form {
 }
 
 .submit-btn input {
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 10px;
   width: 20%;
   margin: 30px;
   background-color: #99775C;
   font-family: "Inter", sans-serif;
-  color:#EAE7DD;
+  color: #EAE7DD;
   font-size: 20px;
   font-weight: bold;
   border: none;
   margin-left: 70px;
+  transition: all 200ms ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn input:hover {
+  border: 2px solid #dd;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
 }
 
 /* Mobile Nav */
@@ -494,4 +502,139 @@ form {
   h2, .l_title p {
     font-size: 10vw;
   }
+}
+
+
+
+/*Hotel Card CSS*/
+.card {
+  display: flex;
+  padding: 16px;
+  border-radius: 20px;
+  margin-top: 16px;
+  border: 1px solid rgb(55, 58, 64);
+  background-color: rgb(20, 21, 23);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.05) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translate(0, -2px);
+}
+
+.card-content {
+  color: white;
+}
+
+.card img {
+  width: 30%;
+  height: auto;
+  max-height: 50%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.card img:hover {
+  transform: scale(1.02);
+}
+
+.card-content {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+.name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.name-rating strong {
+  margin-right: 5px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  color: #f1c40f;
+}
+
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.rating-stars i {
+  font-size: 14px;
+  margin-right: 2px;
+}
+
+@media (max-width: 800px) {
+  .rating-stars i {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rating-stars i {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .rating-stars i {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .rating-stars i {
+    font-size: 6px;
+  }
+}
+
+
+.rating-value {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.rating .fas.fa-star {
+  color: #f1c40f;
+}
+
+.rating .fas.fa-star-half-alt {
+  color: #f1c40f;
+}
+
+.rating .far.fa-star {
+  color: #ccc;
+}
+
+.rating .fas.fa-star:hover,
+.rating .fas.fa-star-half-alt:hover {
+  cursor: pointer;
+  color: #f39c12;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card p strong {
+  font-weight: bold;
+}
+
+.result {
+  margin-top: 20px;
 }
