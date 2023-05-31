@@ -12,7 +12,7 @@ menuClose.addEventListener("click", () => {
 });
 
 function openMap(name, address) {
-  var mapSearch = name + ' ' + address;
-  var mapLink = 'https://www.google.com/maps/place/' + encodeURIComponent(mapSearch);
+  var mapSearch = name + '+' + address.replaceAll(' ', '+');
+  var mapLink = 'https://www.google.com/maps/search/' + mapSearch;
   window.open(mapLink, '_blank');
 }
