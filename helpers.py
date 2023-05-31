@@ -12,8 +12,7 @@ import re
 cnx = sqlite3.connect('tourmate.db')
 df = pd.read_sql_query("SELECT * FROM hotels", cnx)
 
-# Supprimer records avec "rank" ou "adress" vide & dupliqués
-df = df.dropna(subset=['rank'])
+# Supprimer records avec "adress" vide & dupliqués
 df = df.dropna(subset=['address'])
 df.drop_duplicates(subset='name', keep='first', inplace=True)
 
@@ -59,6 +58,18 @@ for index, row in df.iterrows():
     else:
         df.at[index, "languages"] = output
 
+# Calcul des constantes
+df = df.dropna(subset=['reviewers'])
+df = df[df['reviewers'] != '']
+C = df['reviewers'].mean()  # moyenne des "reviewes" 
+m = df['reviewers'].quantile(0.1)  # centile (90%) : le nbr mini pour la crédibilité
+df = df.dropna(subset=['rating'])
+df = df[df['rating'] != '']
+prior_avg = df['rating'].mean()  # Note moyenne antérieure pour tous les hôtels
+
+# calcul de la moyenne bayésienne
+df['bayesian_avg'] = (m * prior_avg + df['reviewers'] * df['rating']) / (m + df['reviewers'])
+
 # Systeme de recommendation
 def recommendation(ville=None, langue=None, preference=None, prix=None):
     data = df.copy()
@@ -100,7 +111,7 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
       data = data[data['languages'].str.contains(langue.lower())]
 
     if preference is None:
-      data = data.sort_values(by='rating',ascending=False)
+      data = data.sort_values(by='bayesian_avg',ascending=False)
       data['similarity'] = 0
 
     output_list = data[['name', 'rating', 'reviewers', 'address', 'description', 'similarity', 'image_url']].head(5).values.tolist()
