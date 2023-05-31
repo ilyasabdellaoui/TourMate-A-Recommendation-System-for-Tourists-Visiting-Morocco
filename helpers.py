@@ -17,10 +17,6 @@ df = df.dropna(subset=['rank'])
 df = df.dropna(subset=['address'])
 df.drop_duplicates(subset='name', keep='first', inplace=True)
 
-# Formater le nom: 21. name -> name
-for index, row in df.iterrows():
-    df.at[index, "name"] = re.findall('\s(.*)', row["name"])[0]
-
 # Extraction de la ville d'une phrase
 def VillesListe():
   return ['rabat', 'casablanca', 'tanger', 'tangier', 'fes', 'fez', 'agadir', 'marrakech', 'dakhla', 'chefchaouen', 'essaouira', 'meknes', 'ouarzazate', 'merzouga']
@@ -107,6 +103,6 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
       data = data.sort_values(by='rating',ascending=False)
       data['similarity'] = 0
 
-    output_list = data[['name', 'rating', 'address', 'description', 'similarity']].head(5).values.tolist()
+    output_list = data[['name', 'rating', 'reviewers', 'address', 'description', 'similarity', 'image_url']].head(5).values.tolist()
     
     return output_list # Retourne Top 5

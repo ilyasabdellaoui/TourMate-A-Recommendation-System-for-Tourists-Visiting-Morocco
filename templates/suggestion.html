@@ -49,7 +49,7 @@
   {% for res in result %}
     <div class="card">
       {% set info_list = res.split('<br>') %}
-      <img src="{{ info_list[5] | default('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/ea/33/7d/hotel-view.jpg?w=1200&h=-1&s=1') }}" alt="Picture">
+      <img src="{{ info_list[6] | default('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/ea/33/7d/hotel-view.jpg?w=1200&h=-1&s=1') }}" alt="Picture">
       <div class="card-content">
         <div class="grid-container">
           <div class="name-rating">
@@ -61,24 +61,24 @@
               
               {% if fullStars > 0 %}
                 <span class="rating-stars">
-                  {% for i in range(fullStars) %}
+                  {% for i in range(fullStars|int) %}
                     <i class="fas fa-star"></i>
                   {% endfor %}
                   {% if halfStars >= 0.5 %}
                     <i class="fas fa-star-half-alt"></i>
                   {% endif %}
-                  {% for i in range(emptyStars) %}
+                  {% for i in range(emptyStars|int) %}
                     <i class="far fa-star"></i>
                   {% endfor %}
                 </span>
               {% endif %}
               
-              <span class="rating-value">{{ info_list[1] }}</span>
-            </p>            
+              <span class="rating-value">{{ info_list[1] }} / {{ info_list[2] }} reviews</span>
+            </p>     
           </div>
-          <p><strong>Similarity:</strong> {{ info_list[4] }}</p>
-          <p><strong>Address:</strong> {{ info_list[2] }}</p>
-          <p><strong>Description:</strong> {{ info_list[3] }}</p>
+          <p><strong>Similarity:</strong> {{ info_list[5] }}</p>
+          <p><strong>Address:</strong> {{ info_list[3] }}</p>
+          <p><strong>Description:</strong> {{ info_list[4] }}</p>
         </div>
       </div>
     </div>
