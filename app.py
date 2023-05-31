@@ -42,7 +42,7 @@ def suggestion():
         result = recommendation(ville=vil, langue=lan, preference=prompt) #, prix=price
         output = []
         for element in result:
-            element[4] = str(element[4])
+            element[5] = str(element[5])
             output.append("<br>".join(element))
 
         return render_template("suggestion.html", villes=villes, langues=langues, result=output)
