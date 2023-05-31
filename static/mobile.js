@@ -10,3 +10,9 @@ menuOpen.addEventListener("click", () => {
 menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
+
+function openMap(name, address) {
+  var mapSearch = name + ' ' + address;
+  var mapLink = 'https://www.google.com/maps/place/' + encodeURIComponent(mapSearch);
+  window.open(mapLink, '_blank');
+}

@@ -505,7 +505,6 @@ form {
 }
 
 
-
 /*Hotel Card CSS*/
 .card {
   display: flex;
@@ -637,4 +636,72 @@ form {
 
 .result {
   margin-top: 20px;
+}
+
+.address-map {
+  display: flex;
+  align-items: center;
+}
+
+.map {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.map a {
+  color: #3498db;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.map a:hover {
+  text-decoration: underline;
+}
+
+.map p {
+  margin: 0;
+  color: #777;
+}
+
+@media (max-width: 240px) {
+  .map a {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 260px) {
+  .map a {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .map a {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .map a {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .map a {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 993px) {
+  .map a {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .map a {
+    font-size: 18px;
+  }
 }

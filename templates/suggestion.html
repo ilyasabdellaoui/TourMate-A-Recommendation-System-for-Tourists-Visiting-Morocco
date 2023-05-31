@@ -49,13 +49,14 @@
   {% for res in result %}
     <div class="card">
       {% set info_list = res.split('<br>') %}
-      <img src="{{ info_list[6] | default('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/ea/33/7d/hotel-view.jpg?w=1200&h=-1&s=1') }}" alt="Picture">
+      <img src="{{ info_list[6] }}" alt="{{ info_list[0] }}" onclick="openMap('{{ info_list[0] }}', '{{ info_list[3] }}')" onerror="this.src='https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'">
       <div class="card-content">
         <div class="grid-container">
           <div class="name-rating">
             <p><strong>Name:</strong> {{ info_list[0] }}</p>
             <p>
               {% set fullStars = info_list[1] | float | round %}
+              {% set reviews = info_list[2] | int | round %}
               {% set halfStars = info_list[1] | float - fullStars %}
               {% set emptyStars = 5 - fullStars - 1 %}
               
@@ -73,19 +74,28 @@
                 </span>
               {% endif %}
               
-              <span class="rating-value">{{ info_list[1] }} / {{ info_list[2] }} reviews</span>
+              <span class="rating-value">{{ info_list[1] }} / {{ reviews }} reviews</span>
             </p>     
           </div>
           <p><strong>Similarity:</strong> {{ info_list[5] }}</p>
-          <p><strong>Address:</strong> {{ info_list[3] }}</p>
+          <div class="address-map">
+            <p>
+              <strong>Address:</strong> {{ info_list[3] }}
+              <div class="map">
+                {% if info_list[3] %}
+                  {% set name = info_list[0] %}
+                  {% set address = info_list[3] %}
+                  <a href="#" onclick="openMap('{{ name }}', '{{ address }}')">View on Google Maps</a>
+                {% endif %}
+            </div>
+            </p>
+          </div>
           <p><strong>Description:</strong> {{ info_list[4] }}</p>
         </div>
       </div>
     </div>
   {% endfor %}
 </div>
-
-  
   
 </form>
 {% endblock %}
