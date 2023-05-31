@@ -61,8 +61,10 @@ for index, row in df.iterrows():
 # Calcul des constantes
 df = df.dropna(subset=['reviewers'])
 df = df[df['reviewers'] != '']
-C = df['reviewers'].mean()  # moyenne des "reviewes" 
-m = df['reviewers'].quantile(0.1)  # centile (90%) : le nbr mini pour la crédibilité
+df['reviewers'] = pd.to_numeric(df['reviewers'], errors='coerce')
+C = round(df['reviewers'].mean(), 3)  # moyenne des "reviewes" 
+m = df['reviewers'].quantile(0.1)  # centile (10%) : le nbr mini pour la crédibilité
+df['rating'] = pd.to_numeric(df['rating'], errors='coerce')  # Convert to numeric
 df = df.dropna(subset=['rating'])
 df = df[df['rating'] != '']
 prior_avg = df['rating'].mean()  # Note moyenne antérieure pour tous les hôtels
@@ -72,6 +74,7 @@ df['bayesian_avg'] = (m * prior_avg + df['reviewers'] * df['rating']) / (m + df[
 
 # Systeme de recommendation
 def recommendation(ville=None, langue=None, preference=None, prix=None):
+    global df
     data = df.copy()
     data = data.set_index(np.arange(data.shape[0]))
 
@@ -114,6 +117,7 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
       data = data.sort_values(by='bayesian_avg',ascending=False)
       data['similarity'] = 0
 
+    df = df.dropna(subset=['bayesian_avg'])
     output_list = data[['name', 'rating', 'reviewers', 'address', 'description', 'similarity', 'image_url']].head(5).values.tolist()
     
     return output_list # Retourne Top 5
