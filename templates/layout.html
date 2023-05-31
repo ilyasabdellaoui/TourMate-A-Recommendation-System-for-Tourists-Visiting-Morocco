@@ -24,6 +24,15 @@
         <a class="cta" href="#">Suggest Me</a>
         <p class="menu cta">Menu</p>
     </header>
+    <div>
+      {% for message in get_flashed_messages() %}
+      <div class="style-0">
+          {{ message }}
+      </div>
+      {% endfor %}
+  
+      {% block page_content %}{% endblock %}
+    </div>
     <div class="overlay">
         <a class="close">&times;</a>
         <div class="overlay__content">
