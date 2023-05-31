@@ -27,7 +27,7 @@ def format_ville(x):
             if word == "tangier":
                 word = "tanger"
             elif word == "fez":
-                word == "fes"
+                word = "fes"
             return word
     return 1 # Ville non valide
 
@@ -104,6 +104,7 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
 
     if prix is not None:
       data = data.dropna(subset=['av_price'])
+      data = data[data['av_price'] != '']
       prix = float(prix)
       data = data[data['av_price'].astype(float) <= prix]
 

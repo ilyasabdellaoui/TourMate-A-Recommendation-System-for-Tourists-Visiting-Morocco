@@ -1,13 +1,15 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, flash
 from helpers import VillesListe, LanguesListe, recommendation
 
 app = Flask(__name__)
 
 use_reloader=True
+app.secret_key = "pfa{it's_a_secret}"
 
 villes = VillesListe()
 langues = LanguesListe()
-
+villes.remove("tangier")
+villes.remove("fez")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -34,19 +36,20 @@ def suggestion():
             prompt = str(request.form.get('prompt'))
         else:
             prompt = None
-        # if request.form.get('price'):
-        #     price = str(request.form.get('price'))
-        # else:
-        #     price = None
+        if request.form.get('price'):
+            price = str(request.form.get('price'))
+        else:
+            price = None
 
-        result = recommendation(ville=vil, langue=lan, preference=prompt) #, prix=price
+        result = recommendation(ville=vil, langue=lan, preference=prompt, prix=price) 
         output = []
         for element in result:
             element[5] = str(element[5])
             element[1] = str(element[1])
             element[2] = str(element[2])
             output.append("<br>".join(element))
-
+        if len(output) == 0:
+            flash('Aucun résultat trouvé.')
         return render_template("suggestion.html", villes=villes, langues=langues, result=output)
     else:
         return render_template("suggestion.html", villes=villes, langues=langues, result="")
