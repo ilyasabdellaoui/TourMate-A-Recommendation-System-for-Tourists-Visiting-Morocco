@@ -324,7 +324,7 @@ form {
 
 .yes-button {
   margin-bottom: 10px;
-  background: linear-gradient(to right, #4CAF50, #99775C, #1C3144);
+  background: #4CAF50;
   color: #FFFFFF;
   border: none;
   border-radius: 7px;
@@ -336,9 +336,8 @@ form {
   border-image-slice: 1;
 }
 
-.yes-button:hover {
-  transform: ease-in-out 0.3s;
-  background: linear-gradient(to left, #4CAF50, #99775C, #1C3144);
+.yes-button:active {
+  background: #B70404;
   border-color: #FFFFFF;
 }
 
@@ -799,7 +798,7 @@ form {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 200px; /* Adjust the max-width as per your design needs */
-  transition: max-width 0.3s ease; /* Add transition for smooth effect */
+  transition: max-width 1s ease; /* Add transition for smooth effect */
 }
 
 .address .full-address {
@@ -842,8 +841,23 @@ form {
   margin-right: 5px;
 }
 
+/************************* New CSS for More Button and Amneties/Features/Rooms *************************/
+.content {
+  justify-content: flex-start;
+  width: 90%;
+}
+
+.more {
+  justify-content: flex-end;
+  width: 7%;
+}
+
+/************************* New CSS for Room Types *************************/
 .room-types {
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .room-types p {
@@ -858,9 +872,10 @@ form {
   display: none;
   position: relative;
   top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
+  left: 0%;
+  width: 80%;
+  transform: translateX(0%);
+  padding: 2px;
   font-size: 14px;
   background-color: #8a8383;
   border-radius: 4px;
@@ -868,12 +883,22 @@ form {
   z-index: 1;
 }
 
-.room-types:hover .room-info-cursor {
-  display: block;
+.room-more {
+  cursor: pointer;
+  color: #3498db;
 }
 
+.room-info-show {
+  display: inline-block;
+}
+
+/************************* New CSS for Amenities *************************/
 .property-amenities {
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
 .property-amenities p {
@@ -888,9 +913,10 @@ form {
   display: none;
   position: relative;
   top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
+  left: 0%;
+  width: 80%;
+  transform: translateX(0%);
+  padding: 2px;
   font-size: 14px;
   background-color: #8a8383;
   border-radius: 4px;
@@ -898,13 +924,22 @@ form {
   z-index: 1;
 }
 
-.property-amenities:hover .amenities-info-cursor {
-  display: block;
+.amenities-more {
+  cursor: pointer;
+  color: #3498db;
 }
 
+.amenities-info-show {
+  display: inline-block;
+}
+
+/************************* New CSS for Features *************************/
 .room-features {
   margin-top: 10px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .room-features p {
@@ -919,9 +954,10 @@ form {
   display: none;
   position: relative;
   top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
+  left: 0%;
+  width: 80%;
+  transform: translateX(0%);
+  padding: 2px;
   font-size: 14px;
   background-color: #8a8383;
   border-radius: 4px;
@@ -929,21 +965,11 @@ form {
   z-index: 1;
 }
 
-.room-features:hover .features-info-cursor {
-  display: block;
+.features-more {
+  cursor: pointer;
+  color: #3498db;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.right-section {
-  align-self: flex-end;
-}
-
-.left-section {
-  align-self: flex-start;
-  flex: 1; /* Adjust the width as needed */
+.features-info-show {
+  display: inline-block;
 }

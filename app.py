@@ -47,8 +47,7 @@ def suggestion():
             element[1] = str(element[1])
             element[2] = str(element[2])
             element[5] = str(element[5])
-            element[9] = str(element[9])
-            element[10] = str(element[10])
+            element[7] = str(element[7])
             output.append("<br>".join(element))
         if len(output) == 0:
             flash('Aucun résultat trouvé.')

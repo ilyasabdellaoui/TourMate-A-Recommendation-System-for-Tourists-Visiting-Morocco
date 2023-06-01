@@ -11,16 +11,24 @@ menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
 
-// Open google map of hotel in new tab
-// function removeApostrophes(value) {
-//   value = value.replace(/['"‘’“”]/g, '');
-//   return value.replace(/'/g, '');
-// }
 
 function openMap(name, city) {
   var mapSearch = name + '+' + city.replaceAll(' ', '+');
   var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + mapSearch;
   window.open(mapLink, '_blank');
+}
+
+function toggleInfo(element, section) {
+  var cursorSpan;
+  if (section === 'amenities') {
+    cursorSpan = element.parentElement.previousElementSibling.querySelector(".amenities-info-cursor");
+  } else if (section === 'features') {
+    cursorSpan = element.parentElement.previousElementSibling.querySelector(".features-info-cursor");
+  } else if (section === 'room') {
+    cursorSpan = element.parentElement.previousElementSibling.querySelector(".room-info-cursor");
+  }
+  cursorSpan.classList.toggle(section + "-info-show");
+  element.innerHTML = cursorSpan.classList.contains(section + "-info-show") ? '<i class="fas fa-chevron-up"></i> Less' : '<i class="fas fa-chevron-down"></i> More';
 }
 
 

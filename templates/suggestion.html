@@ -121,52 +121,79 @@
           <div class="container">            
             <div class="left-section">
               <p class="languages"><strong><i class="fas fa-language"></i></strong> {{ info_list[8] }}</p>
-              <div class="room-types">
-                <p><strong><i class="fas fa-bed"></i>
-                {% set room_types_str = info_list[11].strip('[]') %}
-                {% set room_types_list = room_types_str.split(",") %}
-                {% set room_types_3_list = room_types_list[:3] %}
-                {% set room_type = room_types_3_list|join(", ") %}
-                {{ room_type.replace("'", "") }}
-                {% if room_types_list|length > 3%} and more
-                  <span class="room-info-cursor">
-                    {% set room_types_str = info_list[11].strip('[]') %}
-                    {% set room_types_list = room_types_str.split(",") %}
-                    {% set room_types_3_list = room_types_list[3:] %}
-                    {% set room_type = room_types_3_list|join(", ") %}
-                    {{ room_type.replace("'", "") }}
-                  </span>
-                {% endif %}
-                </strong></p>
-              </div>
 
+              <!--------------------------- Room Types --------------------------->
+              <div class="room-types">
+                <div class="content">
+                  <p>
+                    <strong>
+                      <i class="fas fa-bed"></i>
+                      {% set room_types_str = info_list[11].strip('[]') %}
+                      {% set room_types_list = room_types_str.split(",") %}
+                      {% set room_types_3_list = room_types_list[:3] %}
+                      {{ room_types_3_list|join(", ")|replace("'", "") }}
+                    </strong>
+                  </p>
+                  <span class="room-info-cursor">
+                    {% if room_types_list|length > 3 %}
+                      {% set room_types_3_list = room_types_list[3:] %}
+                      {% set room_types = room_types_3_list|join(", ") %}
+                      {{ room_types.replace("'", "") }}
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="more">
+                  {% if room_types_list|length > 3 %}
+                    <span class="room-more" onclick="toggleInfo(this, 'room')">
+                      <i class="fas fa-chevron-down"></i> More
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+              
+              <!--------------------------- Property Amenities --------------------------->
               <div class="property-amenities">
-                <p><strong><i class="fas fa-building"></i>
-                {% set amenities_str = info_list[9].strip('[]') %}
-                {% set amenities_list = amenities_str.split(",") %}
-                {% set amenities_3_list = amenities_list[:3] %}
-                {% set amenities = amenities_3_list|join(", ") %}
-                {{ amenities.replace("'", "") }}
-                {% if amenities_list|length > 3%} and more
-                  <span class="amenities-info-cursor">            
+                <div class="content">
+                  <p>
+                    <strong>
+                      <i class="fas fa-building"></i>
+                      {% set amenities_str = info_list[9].strip('[]') %}
+                      {% set amenities_list = amenities_str.split(",") %}
+                      {% set amenities_3_list = amenities_list[:3] %}
+                      {% set amenities = amenities_3_list|join(", ") %}
+                      {{ amenities.replace("'", "") }}
+                    </strong>
+                  </p>
+                  <span class="amenities-info-cursor">
                     {% set amenities_str = info_list[9].strip('[]') %}
                     {% set amenities_list = amenities_str.split(",") %}
                     {% set amenities_3_list = amenities_list[3:] %}
                     {% set amenities = amenities_3_list|join(", ") %}
                     {{ amenities.replace("'", "") }}
                   </span>
-                {% endif %}
-                </strong></p>
+                </div>
+                <div class="more">
+                  {% if amenities_list|length > 3 %}
+                    <span class="amenities-more" onclick="toggleInfo(this, 'amenities')">
+                      <i class="fas fa-chevron-down"></i> More
+                    </span>
+                  {% endif %}
+                </div>
               </div>
-              
+
+              <!--------------------------- Room Features --------------------------->
               <div class="room-features">
-                <p><strong><i class="fas fa-cogs"></i>
-                {% set features_str = info_list[10].strip('[]') %}
-                {% set features_list = features_str.split(",") %}
-                {% set features_3_list = features_list[:3] %}
-                {% set features = features_3_list|join(", ") %}
-                {{ features.replace("'", "") }}
-                {% if features_list|length > 3 %} and more
+                <div class="content">
+                  <p>
+                    <strong>
+                      <i class="fas fa-cogs"></i>
+                      {% set features_str = info_list[10].strip('[]') %}
+                      {% set features_list = features_str.split(",") %}
+                      {% set features_3_list = features_list[:3] %}
+                      {% set features = features_3_list|join(", ") %}
+                      {{ features.replace("'", "") }}
+                    </strong>
+                  </p>
                   <span class="features-info-cursor">
                     {% set features_str = info_list[10].strip('[]') %}
                     {% set features_list = features_str.split(",") %}
@@ -174,14 +201,25 @@
                     {% set features = features_3_list|join(", ") %}
                     {{ features.replace("'", "") }}
                   </span>
-                {% endif %}
-                </strong></p>
+                </div>
+                <div class="more">
+                  {% if features_list|length > 3 %}
+                    <span class="features-more" onclick="toggleInfo(this, 'features')">
+                      <i class="fas fa-chevron-down"></i> More
+                    </span>
+                  {% endif %}
+                </div>
               </div>
             </div>
 
             <div class="right-section">
               <div class="average-price">
-                <h3><span>Night from</span><br>${{ info_list[7] }}</h3>
+                {% set price = info_list[7] | float | round %}
+                {% if price > 0 %}
+                  <h3><span>Average price</span><br>${{ price }}</h3>
+                {% else %}
+                  <h3><span>Average price</span><br>Not available</h3>
+                {% endif %}
               </div>
             </div>  
           </div>
