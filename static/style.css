@@ -696,12 +696,21 @@ form {
 .address-map {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.address{
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
 }
 
 .map {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
+  width: 15%;
 }
 
 .map a {
