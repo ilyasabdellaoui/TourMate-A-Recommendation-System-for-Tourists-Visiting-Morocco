@@ -699,9 +699,12 @@ form {
 }
 
 .map a {
-  color: #3498db;
+  color: #99FFFF;
   text-decoration: none;
   margin-left: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 7px;
 }
 
 .map a:hover {
@@ -861,9 +864,12 @@ form {
   z-index: 1;
 }
 
-.room-more {
+.room-more, .amenities-more, .features-more {
   cursor: pointer;
-  color: #3498db;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #f1c40f;
+  font-size: 15px;
 }
 
 .room-info-show {
@@ -902,10 +908,6 @@ form {
   z-index: 1;
 }
 
-.amenities-more {
-  cursor: pointer;
-  color: #3498db;
-}
 
 .amenities-info-show {
   display: inline-block;
@@ -941,11 +943,6 @@ form {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1;
-}
-
-.features-more {
-  cursor: pointer;
-  color: #3498db;
 }
 
 .features-info-show {
