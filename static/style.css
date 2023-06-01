@@ -553,6 +553,12 @@ form {
   background-color: rgb(20, 21, 23);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.05) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   transition: transform 0.2s ease-in-out;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
 
 .card:hover {
@@ -950,4 +956,91 @@ form {
 
 .features-info-show {
   display: inline-block;
+}
+
+
+/************************************* Responsivity of cards for mobile ***************************************/
+@media (max-width: 240px) {
+  .card p {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 260px) {
+  .card p {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card p {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .card p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .card p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 993px) {
+  .card p {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .card p {
+    font-size: 18px;
+  }
+}
+
+/* h3 */
+@media (max-width: 240px) {
+  .card h3 {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 260px) {
+  .card h3 {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card h3 {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .card h3 {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .card h3 {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 993px) {
+  .card h3 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .card h3 {
+    font-size: 18px;
+  }
 }
