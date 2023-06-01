@@ -105,14 +105,13 @@
             <p>
               <div class="address">
                 <i class="fas fa-map-marker-alt"></i>
-                <p class="short-address" onclick="this.classList.toggle('expanded')">{{ info_list[3].split(',')[0] }}</p>
-                <p class="full-address">{{ info_list[3] }}</p>
+                <p>{{ info_list[3] }}</p>
               </div>
               <div class="map">
                 {% if info_list[3] %}
                   {% set name = info_list[0] %}
                   {% set city = info_list[12] %}
-                  <a href="#" onclick="openMap('{{ name|replace("'", "") }}', '{{ city|replace("'", "") }}')">View on Google Maps</a>
+                  <a href="#" onclick="openMap('{{ name|replace("'", "") }}', '{{ city|replace("'", "") }}')">View Maps</a>
                 {% endif %}
             </div>
             </p>
@@ -122,7 +121,7 @@
             <div class="left-section">
               <p class="languages"><strong><i class="fas fa-language"></i></strong> {{ info_list[8] }}</p>
 
-              <!--------------------------- Room Types --------------------------->
+
               <div class="room-types">
                 <div class="content">
                   <p>
@@ -151,7 +150,7 @@
                 </div>
               </div>
               
-              <!--------------------------- Property Amenities --------------------------->
+     
               <div class="property-amenities">
                 <div class="content">
                   <p>
@@ -181,7 +180,7 @@
                 </div>
               </div>
 
-              <!--------------------------- Room Features --------------------------->
+      
               <div class="room-features">
                 <div class="content">
                   <p>
@@ -216,9 +215,9 @@
               <div class="average-price">
                 {% set price = info_list[7] | float | round %}
                 {% if price > 0 %}
-                  <h3><span>Average price</span><br>${{ price }}</h3>
+                  <h3 style="font-weight : bold;"><span>Average price</span><br>${{ price }}</h3>
                 {% else %}
-                  <h3><span>Average price</span><br>Not available</h3>
+                  <h3 style="font-weight : bold;"><span>Average price</span><br>Not available</h3>
                 {% endif %}
               </div>
             </div>  
