@@ -17,3 +17,31 @@ function openMap(name, address) {
   var mapLink = 'https://www.google.com/maps/search/' + mapSearch;
   window.open(mapLink, '_blank');
 }
+
+function toggleInput(inputId) {
+  var inputField = document.getElementById(inputId);
+  var button = inputField.previousElementSibling;
+  var label = button.previousElementSibling;
+
+  if (inputField.style.display === "none") {
+    inputField.style.display = "inline-block";
+    button.textContent = "No";
+    if (inputId === "room-types-input") {
+      label.textContent = "Room Types preferences: Changed your mind? Click \"NO\".";
+    } else if (inputId === "room-features-input") {
+      label.textContent = "Room Features preferences: Changed your mind? Click \"NO\".";
+    } else if (inputId === "property-amenities-input") {
+      label.textContent = "Property Amenities preferences: Changed your mind? Click \"NO\".";
+    }
+  } else {
+    inputField.style.display = "none";
+    button.textContent = "Yes";
+    if (inputId === "room-types-input") {
+      label.textContent = "Do you have specific Room Types preferences? Click \"Yes\" to specify.";
+    } else if (inputId === "room-features-input") {
+      label.textContent = "Do you have specific Room Features preferences? Click \"Yes\" to specify.";
+    } else if (inputId === "property-amenities-input") {
+      label.textContent = "Do you have specific Property Amenities preferences? Click \"Yes\" to specify.";
+    }
+  }
+}

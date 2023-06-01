@@ -34,10 +34,31 @@
       <input type="number" step=0.01 name="price">
     </div>
   </div>
-
+  
   <div class="prompt">
     <label>Magic prompt</label>
     <input type="text" name="prompt">
+  </div>
+
+  <!--New Checkbox for Amenities-->
+  <div class="checkbox-grid">
+    <div>
+      <label for="room-types" class="input-label">Do you have specific Room Types preferences? Click "Yes" to specify.</label>
+      <button type="button" onclick="toggleInput('room-types-input')" class="yes-button">Yes</button>
+      <input type="text" id="room-types-input" name="room_types" class="input-field" style="display: none;">
+    </div>
+
+    <div>
+      <label for="room-features" class="input-label">Do you have specific Room Features preferences? Click "Yes" to specify.</label>
+      <button type="button" onclick="toggleInput('room-features-input')" class="yes-button">Yes</button>
+      <input type="text" id="room-features-input" name="room_features" class="input-field" style="display: none;">
+    </div>
+
+    <div>
+      <label for="property-amenities" class="input-label">Do you have specific Property Amenities preferences? Click "Yes" to specify.</label>
+      <button type="button" onclick="toggleInput('property-amenities-input')" class="yes-button">Yes</button>
+      <input type="text" id="property-amenities-input" name="property_amenities" class="input-field" style="display: none;">
+    </div>
   </div>
   
   <div class="submit-btn">
