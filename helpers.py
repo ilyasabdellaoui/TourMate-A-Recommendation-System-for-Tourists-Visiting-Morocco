@@ -125,5 +125,5 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
 
     df = df.dropna(subset=['bayesian_avg'])
     
-    output_list = data[['name', 'rating', 'reviewers', 'address', 'description', 'similarity', 'image_url', 'av_price', 'languages', 'property_amenities', 'room_features', 'room_types']].head(10).values.tolist()
+    output_list = data[['name', 'rating', 'reviewers', 'address', 'description', 'similarity', 'image_url', 'av_price', 'languages', 'property_amenities', 'room_features', 'room_types', 'city']].head(10).values.tolist()
     return output_list # Retourne Top 5

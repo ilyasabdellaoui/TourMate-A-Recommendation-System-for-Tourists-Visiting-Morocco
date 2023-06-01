@@ -932,3 +932,18 @@ form {
 .room-features:hover .features-info-cursor {
   display: block;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.right-section {
+  align-self: flex-end;
+}
+
+.left-section {
+  align-self: flex-start;
+  flex: 1; /* Adjust the width as needed */
+}

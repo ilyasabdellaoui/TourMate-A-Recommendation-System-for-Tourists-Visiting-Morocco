@@ -12,12 +12,20 @@ menuClose.addEventListener("click", () => {
 });
 
 // Open google map of hotel in new tab
-function openMap(name, address) {
-  var mapSearch = name + '+' + address.replaceAll(' ', '+');
-  var mapLink = 'https://www.google.com/maps/search/' + mapSearch;
+// function removeApostrophes(value) {
+//   value = value.replace(/['"‘’“”]/g, '');
+//   return value.replace(/'/g, '');
+// }
+
+function openMap(name, city) {
+  var mapSearch = name + '+' + city.replaceAll(' ', '+');
+  var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + mapSearch;
   window.open(mapLink, '_blank');
 }
 
+
+
+// Show Amnities Checkbox
 function toggleInput(inputId) {
   var inputField = document.getElementById(inputId);
   var button = inputField.previousElementSibling;

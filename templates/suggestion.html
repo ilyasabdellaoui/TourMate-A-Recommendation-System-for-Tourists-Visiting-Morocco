@@ -70,7 +70,9 @@
   {% for res in result %}
     <div class="card">
       {% set info_list = res.split('<br>') %}
-      <img src="{{ info_list[6] }}" alt="{{ info_list[0] }}" onclick="openMap('{{ info_list[0] }}', '{{ info_list[3] }}')" onerror="this.src='https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'">
+      {% set name = info_list[0] %}
+      {% set city = info_list[12] %}
+      <img src="{{ info_list[6] }}" alt="{{ info_list[0] }}" onclick="openMap('{{ name|replace("'", "") }}', '{{ city|replace("'", "") }}')" onerror="this.src='https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'">
       <div class="card-content">
         <div class="grid-container">
           <div class="name-rating">
@@ -109,74 +111,80 @@
               <div class="map">
                 {% if info_list[3] %}
                   {% set name = info_list[0] %}
-                  {% set address = info_list[3] %}
-                  <a href="#" onclick="openMap('{{ name }}', '{{ address }}')">View on Google Maps</a>
+                  {% set city = info_list[12] %}
+                  <a href="#" onclick="openMap('{{ name|replace("'", "") }}', '{{ city|replace("'", "") }}')">View on Google Maps</a>
                 {% endif %}
             </div>
             </p>
           </div>
           <!-- <p><strong>Description:</strong> {{ info_list[4] }}</p> -->
-          <div class="average-price">
-            <h3><span>Night from</span><br>${{ info_list[7] }}</h3>
-          </div>
-          <p class="languages"><strong><i class="fas fa-language"></i></strong> {{ info_list[8] }}</p>
-          <div class="room-types">
-            <p><strong><i class="fas fa-bed"></i>
-            {% set room_types_str = info_list[11].strip('[]') %}
-            {% set room_types_list = room_types_str.split(",") %}
-            {% set room_types_3_list = room_types_list[:3] %}
-            {% set room_type = room_types_3_list|join(", ") %}
-            {{ room_type.replace("'", "") }}
-            {% if room_types_list|length > 3%} and more
-              <span class="room-info-cursor">
+          <div class="container">            
+            <div class="left-section">
+              <p class="languages"><strong><i class="fas fa-language"></i></strong> {{ info_list[8] }}</p>
+              <div class="room-types">
+                <p><strong><i class="fas fa-bed"></i>
                 {% set room_types_str = info_list[11].strip('[]') %}
                 {% set room_types_list = room_types_str.split(",") %}
-                {% set room_types_3_list = room_types_list[3:] %}
+                {% set room_types_3_list = room_types_list[:3] %}
                 {% set room_type = room_types_3_list|join(", ") %}
                 {{ room_type.replace("'", "") }}
-              </span>
-            {% endif %}
-            </strong></p>
-          </div>
+                {% if room_types_list|length > 3%} and more
+                  <span class="room-info-cursor">
+                    {% set room_types_str = info_list[11].strip('[]') %}
+                    {% set room_types_list = room_types_str.split(",") %}
+                    {% set room_types_3_list = room_types_list[3:] %}
+                    {% set room_type = room_types_3_list|join(", ") %}
+                    {{ room_type.replace("'", "") }}
+                  </span>
+                {% endif %}
+                </strong></p>
+              </div>
 
-          <div class="property-amenities">
-            <p><strong><i class="fas fa-building"></i>
-            {% set amenities_str = info_list[9].strip('[]') %}
-            {% set amenities_list = amenities_str.split(",") %}
-            {% set amenities_3_list = amenities_list[:3] %}
-            {% set amenities = amenities_3_list|join(", ") %}
-            {{ amenities.replace("'", "") }}
-            {% if amenities_list|length > 3%} and more
-              <span class="amenities-info-cursor">            
+              <div class="property-amenities">
+                <p><strong><i class="fas fa-building"></i>
                 {% set amenities_str = info_list[9].strip('[]') %}
                 {% set amenities_list = amenities_str.split(",") %}
-                {% set amenities_3_list = amenities_list[3:] %}
+                {% set amenities_3_list = amenities_list[:3] %}
                 {% set amenities = amenities_3_list|join(", ") %}
                 {{ amenities.replace("'", "") }}
-              </span>
-            {% endif %}
-            </strong></p>
-          </div>
-          
-          <div class="room-features">
-            <p><strong><i class="fas fa-cogs"></i>
-            {% set features_str = info_list[10].strip('[]') %}
-            {% set features_list = features_str.split(",") %}
-            {% set features_3_list = features_list[:3] %}
-            {% set features = features_3_list|join(", ") %}
-            {{ features.replace("'", "") }}
-            {% if features_list|length > 3 %} and more
-              <span class="features-info-cursor">
+                {% if amenities_list|length > 3%} and more
+                  <span class="amenities-info-cursor">            
+                    {% set amenities_str = info_list[9].strip('[]') %}
+                    {% set amenities_list = amenities_str.split(",") %}
+                    {% set amenities_3_list = amenities_list[3:] %}
+                    {% set amenities = amenities_3_list|join(", ") %}
+                    {{ amenities.replace("'", "") }}
+                  </span>
+                {% endif %}
+                </strong></p>
+              </div>
+              
+              <div class="room-features">
+                <p><strong><i class="fas fa-cogs"></i>
                 {% set features_str = info_list[10].strip('[]') %}
                 {% set features_list = features_str.split(",") %}
-                {% set features_3_list = features_list[3:] %}
+                {% set features_3_list = features_list[:3] %}
                 {% set features = features_3_list|join(", ") %}
                 {{ features.replace("'", "") }}
-              </span>
-            {% endif %}
-            </strong></p>
-          </div>
+                {% if features_list|length > 3 %} and more
+                  <span class="features-info-cursor">
+                    {% set features_str = info_list[10].strip('[]') %}
+                    {% set features_list = features_str.split(",") %}
+                    {% set features_3_list = features_list[3:] %}
+                    {% set features = features_3_list|join(", ") %}
+                    {{ features.replace("'", "") }}
+                  </span>
+                {% endif %}
+                </strong></p>
+              </div>
+            </div>
 
+            <div class="right-section">
+              <div class="average-price">
+                <h3><span>Night from</span><br>${{ info_list[7] }}</h3>
+              </div>
+            </div>  
+          </div>
         </div>
       </div>
     </div>
