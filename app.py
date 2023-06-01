@@ -44,9 +44,11 @@ def suggestion():
         result = recommendation(ville=vil, langue=lan, preference=prompt, prix=price) 
         output = []
         for element in result:
-            element[5] = str(element[5])
             element[1] = str(element[1])
             element[2] = str(element[2])
+            element[5] = str(element[5])
+            element[9] = str(element[9])
+            element[10] = str(element[10])
             output.append("<br>".join(element))
         if len(output) == 0:
             flash('Aucun résultat trouvé.')

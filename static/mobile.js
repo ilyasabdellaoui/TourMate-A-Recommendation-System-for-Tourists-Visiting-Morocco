@@ -11,6 +11,7 @@ menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
 
+// Open google map of hotel in new tab
 function openMap(name, address) {
   var mapSearch = name + '+' + address.replaceAll(' ', '+');
   var mapLink = 'https://www.google.com/maps/search/' + mapSearch;

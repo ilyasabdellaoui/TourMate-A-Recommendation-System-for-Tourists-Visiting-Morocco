@@ -571,6 +571,17 @@ form {
   grid-gap: 5px;
 }
 
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.name i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+
 .name-rating {
   display: flex;
   justify-content: space-between;
@@ -724,4 +735,159 @@ form {
   .map a {
     font-size: 18px;
   }
+}
+
+.address-map {
+  display: flex;
+  align-items: center;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+}
+
+.address i {
+  margin-right: 5px;
+}
+
+.address .short-address {
+  margin: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px; /* Adjust the max-width as per your design needs */
+  transition: max-width 0.3s ease; /* Add transition for smooth effect */
+}
+
+.address .full-address {
+  margin: 0;
+  display: none;
+  white-space: normal;
+}
+
+.address:hover .short-address {
+  max-width: 0;
+  overflow: hidden;
+}
+
+.address:hover .full-address {
+  display: block;
+}
+
+.average-price {
+  margin-top: 10px;
+}
+
+.average-price h3 {
+  font-weight: 400;
+  font-size: 24px;
+  text-align: right;
+}
+
+.average-price h3 span {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.languages i {
+  margin-right: 5px;
+}
+
+.room-types {
+  margin-top: 10px;
+}
+
+.room-types p {
+  margin: 0;
+}
+
+.room-types i {
+  margin-right: 5px;
+}
+
+.room-info-cursor {
+  display: none;
+  position: relative;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  font-size: 14px;
+  background-color: #8a8383;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.room-types:hover .room-info-cursor {
+  display: block;
+}
+
+.property-amenities {
+  margin-top: 10px;
+}
+
+.property-amenities p {
+  margin: 0;
+}
+
+.property-amenities i {
+  margin-right: 5px;
+}
+
+.amenities-info-cursor {
+  display: none;
+  position: relative;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  font-size: 14px;
+  background-color: #8a8383;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.property-amenities:hover .amenities-info-cursor {
+  display: block;
+}
+
+.room-features {
+  margin-top: 10px;
+  position: relative;
+}
+
+.room-features p {
+  margin: 0;
+}
+
+.room-features i {
+  margin-right: 5px;
+}
+
+.features-info-cursor {
+  display: none;
+  position: relative;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  font-size: 14px;
+  background-color: #8a8383;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.room-features:hover .features-info-cursor {
+  display: block;
 }
