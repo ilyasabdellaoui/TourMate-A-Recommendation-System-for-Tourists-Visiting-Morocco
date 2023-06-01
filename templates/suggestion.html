@@ -40,31 +40,31 @@
     <input type="text" name="prompt">
   </div>
 
-  <!--New Checkbox for Amenities-->
-  <div class="checkbox-grid">
+  <!--Checkbox for Amenities-->
+  <div class="prompt">
+    <label>↓ Check features to include ↓</label>
+  </div>
+  <div class="input-grid" id="checkbox"> 
     <div>
-      <label for="room-types" class="input-label">Do you have specific Room Types preferences? Click "Yes" to specify.</label>
-      <button type="button" onclick="toggleInput('room-types-input')" class="yes-button">Yes</button>
-      <input type="text" id="room-types-input" name="room_types" class="input-field" style="display: none;">
+      <input type="checkbox" value="pamen">
+      <label><em>Property Amenitie</em></label>
     </div>
 
     <div>
-      <label for="room-features" class="input-label">Do you have specific Room Features preferences? Click "Yes" to specify.</label>
-      <button type="button" onclick="toggleInput('room-features-input')" class="yes-button">Yes</button>
-      <input type="text" id="room-features-input" name="room_features" class="input-field" style="display: none;">
+      <input type="checkbox" value="rfea">
+      <label><em>Room Features</em></label>
     </div>
-
+      
     <div>
-      <label for="property-amenities" class="input-label">Do you have specific Property Amenities preferences? Click "Yes" to specify.</label>
-      <button type="button" onclick="toggleInput('property-amenities-input')" class="yes-button">Yes</button>
-      <input type="text" id="property-amenities-input" name="property_amenities" class="input-field" style="display: none;">
+      <input type="checkbox" value="rtyp">
+      <label><em>Room Types</em></label>
     </div>
   </div>
   
   <div class="submit-btn">
     <input type="submit" value="Bismillah">
   </div>
-
+</form>
 <!-- Hotel Card -->
 <div class="result">
   {% for res in result %}
@@ -191,11 +191,4 @@
   {% endfor %}
 </div>
   
-</form>
 {% endblock %}
-
-{% macro input(name, value='', type='text', size=20) -%}
-    {% set list1 = variable1.split(',') %}
-    <input type="{{ type }}" name="{{ name }}" value="{{
-        value|e }}" size="{{ size }}">
-{% endmacro %}

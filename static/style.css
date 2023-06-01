@@ -311,39 +311,16 @@ form {
   font-weight: bold;
 }
 
-/* New checkbox for Amenities */
-.checkbox-grid {
-  margin-top: 20px; /* Add margin-top to create space */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
-  align-items: center;
-  margin-left: 70px;
+#checkbox label {
+  display: inline;
+  font-size: 1.3em;
 }
 
-.yes-button {
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #4CAF50, #99775C, #1C3144);
-  color: #FFFFFF;
-  border: none;
-  border-radius: 7px;
-  padding: 10px 20px;
-  font-size: 1.1vw;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-image: linear-gradient(to right, #FFFFFF, #FFFFFF) 1;
-  border-image-slice: 1;
+#checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
 }
-
-.yes-button:hover {
-  transform: ease-in-out 0.3s;
-  background: linear-gradient(to left, #4CAF50, #99775C, #1C3144);
-  border-color: #FFFFFF;
-}
-
-
-/*Fin de nouveau style pour checkbox*/
 
 .prompt {
   margin-top: 20px; /* Add margin-top to create space */
@@ -361,7 +338,7 @@ form {
   border-radius: 15px;
   padding: 10px;
   width: 20%;
-  margin: 30px;
+  margin: 10px 30px;
   background-color: #99775C;
   font-family: "Inter", sans-serif;
   color: #EAE7DD;

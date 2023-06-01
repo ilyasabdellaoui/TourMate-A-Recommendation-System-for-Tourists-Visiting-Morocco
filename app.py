@@ -40,15 +40,26 @@ def suggestion():
             price = str(request.form.get('price'))
         else:
             price = None
+        if request.form.get('pamen'):
+            pamen = True
+        else:
+            pamen = False
+        if request.form.get('rfea'):
+            rfean = True
+        else:
+            rfea = False
+        if request.form.get('rtyp'):
+            rtyp = True
+        else:
+            rtyp = False
 
-        result = recommendation(ville=vil, langue=lan, preference=prompt, prix=price) 
+        result = recommendation(ville=vil, langue=lan, preference=prompt, prix=price, pamen=pamen, rfea=rfea, rtyp=rtyp) 
         output = []
         for element in result:
             element[1] = str(element[1])
             element[2] = str(element[2])
             element[5] = str(element[5])
-            element[9] = str(element[9])
-            element[10] = str(element[10])
+            element[7] = str(element[7])
             output.append("<br>".join(element))
         if len(output) == 0:
             flash('Aucun résultat trouvé.')

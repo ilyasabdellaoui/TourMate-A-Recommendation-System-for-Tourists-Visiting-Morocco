@@ -54,7 +54,7 @@ df['languages'] = ""
 for index, row in df.iterrows():
     output = format_langue(row["hotel_styles_languages"])
     if(len(output) == 0):
-        df = df.drop(index)
+        df.at[index, "languages"] = 'arabic french'
     else:
         df.at[index, "languages"] = output
 
@@ -78,7 +78,7 @@ prior_avg = df['rating'].mean()  # Prior average rating for all hotels
 df['bayesian_avg'] = (m * prior_avg + df['reviewers'] * df['rating']) / (m + df['reviewers'])
 
 # Systeme de recommendation
-def recommendation(ville=None, langue=None, preference=None, prix=None):
+def recommendation(ville=None, langue=None, preference=None, prix=None, pamen=False, rfea=False, rtyp=False):
     global df
     data = df.copy()
     data = data.set_index(np.arange(data.shape[0]))
@@ -94,6 +94,15 @@ def recommendation(ville=None, langue=None, preference=None, prix=None):
       for se in f1_set:
           f_set.add(lemm.lemmatize(se))
       # Formatage de la description
+
+      # Ajout de plus de détails dans la recherche
+      if pamen == True:
+         data["description"] = data['description']+" "+ df["property_amenities"]
+      if rfea == True:
+         data["description"] = data['description']+" "+ df["room_features"]
+      if rtyp == True:
+         data["description"] = data['description']+" "+ df["room_types"]
+
       data['description'] = data['description'].str.lower()
       cos=[]
       for i in range(data.shape[0]):
