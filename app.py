@@ -16,7 +16,7 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
     else:
-        if request.form['action'] == 'Ajoute un hotêl':
+        if request.form['action'] == 'Ajoute un hôtel':
             return redirect("/encours")
         return redirect("/suggestion")
     
