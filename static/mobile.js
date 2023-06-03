@@ -11,13 +11,14 @@ menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
 
-
+\\Open Map for Hotel Card
 function openMap(name, city) {
   var mapSearch = name + '+' + city.replaceAll(' ', '+');
   var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + mapSearch;
   window.open(mapLink, '_blank');
 }
 
+\\Amenities For Hotels 
 function toggleInfo(element, section) {
   var cursorSpan;
   if (section === 'amenities') {
@@ -30,7 +31,6 @@ function toggleInfo(element, section) {
   cursorSpan.classList.toggle(section + "-info-show");
   element.innerHTML = cursorSpan.classList.contains(section + "-info-show") ? '<i class="fas fa-chevron-up"></i> Less' : '<i class="fas fa-chevron-down"></i> More';
 }
-
 
 
 // Show Amnities Checkbox
