@@ -1,5 +1,6 @@
 # Importation des librairies nécessaires
 import numpy as np
+from math import sqrt
 import sqlite3
 import pandas as pd
 from nltk.corpus import stopwords 
@@ -81,8 +82,6 @@ df['bayesian_avg'] = (m * prior_avg + df['reviewers'] * df['rating']) / (m + df[
 def recommendation(ville=None, langue=None, preference=None, prix=None, pamen=False, rfea=False, rtyp=False):
     global df
     data = df.copy()
-    data = data.set_index(np.arange(data.shape[0]))
-
     if preference is not None:
       # Formatage de la preference 
       preference = preference.lower()
@@ -94,7 +93,9 @@ def recommendation(ville=None, langue=None, preference=None, prix=None, pamen=Fa
       for se in f1_set:
           f_set.add(lemm.lemmatize(se))
       # Formatage de la description
-
+      data = data.dropna(subset=['description'])
+      data = data[data['description'] != '']
+      data = data.set_index(np.arange(data.shape[0]))
       # Ajout de plus de détails dans la recherche
       if pamen == True:
          data["description"] = data['description']+" "+ df["property_amenities"]
@@ -105,17 +106,24 @@ def recommendation(ville=None, langue=None, preference=None, prix=None, pamen=Fa
 
       data['description'] = data['description'].str.lower()
       cos=[]
+      card_pref = len(f_set)
       for i in range(data.shape[0]):
           temp_tokens = word_tokenize(str(data['description'][i]))
           temp1_set = {w for w in temp_tokens if not w in sw}
           temp_set = set()
           for se in temp1_set:
               temp_set.add(lemm.lemmatize(se))
+          card_desc = len(temp1_set)
+          if card_desc == 0:
+            data = data.drop(index=i)
+            continue
           similaire = temp_set.intersection(f_set)
-          cos.append(len(similaire))
+          cos.append(len(similaire) / sqrt(card_desc * card_pref))
       data['similarity'] = cos
       data = data.sort_values(by='similarity', ascending=False)
-
+    else:
+       data = data.set_index(np.arange(data.shape[0]))
+       
     if ville is not None: 
       data = data[data['city']==ville.lower()]
 
