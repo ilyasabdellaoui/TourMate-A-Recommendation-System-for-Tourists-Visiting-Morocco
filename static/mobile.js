@@ -11,14 +11,14 @@ menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
 
-\\Open Map for Hotel Card
+// Open Map for Hotel Card
 function openMap(name, city) {
   var mapSearch = name + '+' + city.replaceAll(' ', '+');
   var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + mapSearch;
   window.open(mapLink, '_blank');
 }
 
-\\Amenities For Hotels 
+// Amenities For Hotels 
 function toggleInfo(element, section) {
   var cursorSpan;
   if (section === 'amenities') {

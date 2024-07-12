@@ -1,3 +1,4 @@
 .venv
 tourmate.db
 merged.db
+__pycache__
